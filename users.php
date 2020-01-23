@@ -9,6 +9,7 @@ $users = $database->select("users", [
 ]);
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -16,12 +17,13 @@ $users = $database->select("users", [
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="js/bootstrap.min.js"></script>
     </head>
     <body>
 
     <nav class="navbar navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Attendance System</a>
+        <a href="index.php"  class="fa fa-home" style="font-size:50px;color:white;"> </a>
         <ul class="nav nav-pills">
             <li class="nav-item">
                 <a href="attendance.php" class="nav-link">View Attendance</a>
@@ -31,6 +33,7 @@ $users = $database->select("users", [
             </li>
         </ul>
     </nav>
+
     <div class="container">
         <div class="row">
             <h2>Users</h2>
@@ -41,6 +44,8 @@ $users = $database->select("users", [
                     <th scope="col">#</th>
                     <th scope="col">Name</th>
                     <th scope="col">RFID UID</th>
+		    
+
                 </tr>
             </thead>
             <tbody>
@@ -48,12 +53,13 @@ $users = $database->select("users", [
                 //Loop through and list all the information of each user including their RFID UID
                 foreach($users as $user) {
                     echo '<tr>';
-                    echo '<td scope="row">' . $user['id'] . '</td>';
-                    echo '<td>' . $user['name'] . '</td>';
-                    echo '<td>' . $user['rfid_uid'] . '</td>';
-                    echo '</tr>';
+                    echo ' <td  scope="row">' . $user['id'] .' </td>';
+                    echo ' <td>'  . $user['name'] .' </td>';
+                    echo ' <td>'  . $user['rfid_uid']. ' </td>';    
+                    echo ' </tr>';
                 }
-                ?>
+                
+               ?> 
             </tbody>
         </table>
     </div>
