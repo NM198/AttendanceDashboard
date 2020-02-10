@@ -14,3 +14,4 @@ $database = new Medoo([
     'username'      => 'attendanceadmin',
     'password'      => 'attendance2020'
 ]);
+?>
