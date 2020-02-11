@@ -1,0 +1,26 @@
+body{
+
+	background-image: url("https://img.techpowerup.org/200122/view-of-city-at-airport-326410.jpg");
+
+}
+
+#registerform{
+		
+		text-align:center;
+		margin-top: 20vh;
+		background-image: url("https://img.techpowerup.org/200122/view-of-city-at-airport-326410.jpg");
+		color:white;
+		font-family:'Arial';
+		
+}
+
+#loginform{
+	
+		text-align:center;
+		margin-top: 20vh;
+		background-image: url("https://img.techpowerup.org/200122/view-of-city-at-airport-326410.jpg");
+		color:white;
+		font-family:'Arial';
+
+
+}
