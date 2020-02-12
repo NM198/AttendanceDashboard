@@ -1,14 +1,16 @@
 <?php
+
 session_start();
 $username="";
 $email="";
-
 $errors=array();
+$errorslogin=array();
 
 //connect to db 
 $db=mysqli_connect('localhost','attendanceadmin','attendance2020','attendancesystem') or die ("could not connect to the database");
 
 //register users
+if (isset($_POST['user_login'])){
 $username =mysqli_real_escape_string($db, $_POST['username']);
 
 $email=mysqli_real_escape_string($db, $_POST['email']);
@@ -49,46 +51,44 @@ if($userlogin){
 
 //if no errors , register user
 if(count($errors) ===0){
-	$password=md5($password_1); //encrypt
+	$password= md5($password_1); //encrypt
 	$query = "INSERT INTO userlogin(username,email,password) VALUES ('$username', '$email', '$password')";
 	mysqli_query($db,$query);
 	$_SESSION['username'] =$username;
 	$_SESSION['success'] = "you are now logged in";
-	header("Location: index.php");
-	exit();
-	
+	header('location: index.php');
+	}
 }
 
 //Login user
-if(!empty($_POST['login_user'])){
+if(isset($_POST['user_login'])){
+	
 	$username = mysqli_real_escape_string($db, $_POST['username']);
-	$password = mysqli_real_escape_string($db, $_POST['password_1']);	
+	$password = mysqli_real_escape_string($db, $_POST['password']);	
 	
 	if(empty($username)){	
-	 array_push($errors, "username is required"); 
+	 array_push($errorslogin, "username is required"); 
 	}
 	 if(empty($password)){
-	 array_push($errors, "password is required");
+	 array_push($errorslogin, "password is required");
 	}
-	if(count($errors) == 0 ){		
+	if(count($errorslogin) === 0 ){		
 	 $password = md5($password); //encrypt
 	 
-	 $query = "SELECT * FROM userlogin WHERE username ='$username' AND password='$password' LIMIT 1";
+	 $query = "SELECT * FROM userlogin WHERE username ='$username' AND password='$password'";
 	 
 	 $results = mysqli_query($db, $query);
 	 
-	if(mysqli_num_rows($results)){
+	if(mysqli_num_rows($results) ){
 	 
 	  $_SESSION['username'] = $username;
 	  $_SESSION['success'] = "logged in successfully";
-	  header("Location: index.php"); 
-	  exit();
+	  header('location: index.php'); 
+	  
 	}else{	
-	  array_push($errors, "Wrong Username/Password combination. Please try again");	
+	  array_push($errorslogin, "Wrong Username/Password combination. Please try again");	
 	}	
-	}
-
+  }
 }
-
 
 ?>

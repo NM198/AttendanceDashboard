@@ -1,16 +1,15 @@
-<?php include('server.php') ?>
 <?php
     session_start();
-    if(!empty($_SESSION['username'])){
+    if(!isset($_SESSION['username'])){
         $_SESSION['msg'] = "You must login to view this page";
-        header("Location: login.php");
-        exit();
+        header('location: login.php');
+       
 }
-    if(!empty($_GET['logout'])){
+    if(isset($_GET['logout'])){
         session_destroy();
         unset($_SESSION['username']);
-        header("Location: login.php");
-        exit();
+        header('location: login.php');
+        
 }
 ?>
 
@@ -66,8 +65,25 @@
  
         <div class="content">
             
-            <p> Dashboard</p>
-              
+           <?php
+        // Welcome, logout user
+            if(isset($_SESSION['success'])) : ?>
+                <div>
+                    <h3>
+                    <?php
+                        echo $_SESSION['success'];
+                        unset($_SESSION['success']);
+                    ?>
+                    </h3>
+                </div>
+        <?php endif ?>
+        
+        <?php if(isset($_SESSION["username"])) : ?> 
+                <h1>Welcome <?php echo $_SESSION['username']; ?> to your Dashboard</h1> 
+                <button class="btn btn-danger btn-sm"><a href="index.php?logout='1'"></a> Logout</button>
+                
+        <?php endif ?>
+             
         <div class="row mx-n2">
             
         <div class="col-md px-2">
@@ -109,24 +125,6 @@
         </div>
     
         </div>
-       
-        <?php
-        // Welcome, logout user
-            if(!empty($_SESSION['success'])) : ?>
-                <div>
-                    <h3>
-                        <?php
-                        echo $_SESSION['success'];
-                        unset($_SESSION['success']);
-                        ?>
-                    </h3>
-                </div>
-        <?php endif ?>
-        <?php if(!empty($_SESSION['username'])) : ?> 
-                <h3>Welcome <?php echo $_SESSION['username']; ?></h3> 
-                <button><a href="index.php?logout='1'"></a></button>
-        <?php endif?>
-        
         </div>
 </body>
 </html>

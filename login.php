@@ -1,4 +1,4 @@
-<?php include('server.php') ?>
+<?php include('server.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,13 +18,12 @@
     <div class="container">
       
     <div class="header">
-      
-      
-      
+  
     </div>
     
     <!-- Log In form --->
-    <form id ="loginform" action="login.php" method ="POST">
+    <form id ="loginform" autocomplete="off" action="login.php" method ="POST">
+       <?php include('errorslogin.php'); ?>
       <h2 style="text-align:center;"> Log In Here </h2>
       <br>
       <br>
@@ -38,12 +37,12 @@
       <div>
         
         <label for="password">Password:</label>
-        <input type="current-password" name="password_1" required>
+        <input type="current-password" name="password" required>
         
       </div>
         <br>
         <br>
-        <button class="btn btn-primary btn-lg "type="submit">Sign In</button>
+        <button class="btn btn-primary btn-lg "type="submit" name="user_login">Sign In</button>
         <br>
         <br>
         <p>Not a user? <a href="register.php"> Register Here</a></p>

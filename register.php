@@ -1,4 +1,4 @@
-<?php include('server.php') ?>
+<?php include('server.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,34 +20,31 @@
       
     <div class="header">
       
-     
-      
-  
     
     <!--Registration Form  --->
-    <form id="registerform" action="register.php" method ="POST">
+    <form id="registerform" action="register.php" method ="post">
        <h2 style="text-align:center;"> Register Here</h2>
        <br>
        <br>
-      <?php include('errors.php')?>
+      <?php include('errors.php'); ?>
       <div>
         
         <label for ="username">Username: </label>
-        <input type="text" name="username" required>
+        <input type="text" name="username" value="<?php echo $username; ?>" required>
         
       </div>
       <br>
       <div>
         
         <label for="email">Email: </label>
-        <input type="email" name="email" required>
+        <input type="email" name="email" value="<?php echo $email; ?>" required>
        
       </div>
       <br>
       <div>
         
         <label for="password">Password: </label>
-        <input type="new-password" name="password_1" required>
+        <input type="new-password" name="password_1"  required>
         
       </div>
       <br>
@@ -59,7 +56,7 @@
       </div>
       <br>
       <br>
-        <button class="btn btn-primary btn-lg" type="user_login" >Submit </button>
+        <button class="btn btn-primary btn-lg" type="submit" name="user_login">Submit </button>
        <br>
        <br> 
         <p>Already a user? <a href="login.php"> Log in</a></p>
