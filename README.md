@@ -5,13 +5,11 @@ Employee attendance and information Dashboard
 Instructions - Backend:
 
 Instructions for new user setup and save nfc tag. 
+ 
 
-0. Check the nfc reader, In the terminal -- python3 /var/www/html/Dashboard/Backend/readone.py and then place nfc to reader. 
+1. Register a new user using nfc, run save_user.py and then place nfc to reader. Follow the steps on the display. 
 
-1. Register a new user using nfc, In the terminal -- python3 /var/www/html/Dashboard/Backend/save_user.py and then place nfc to reader. Follow the steps on the display. 
-
-2. Log attendance,  In the terminal -- python3 /var/www/html/Dashboard/Backend/check_attendance.py and then place nfc to reader.
-
+2. Log attendance,run record_attendance.py and then place nfc to reader.
 
 
 Instructions - frontend:
@@ -32,9 +30,7 @@ Instructions to view attendance
 
 
 
-
 Requirements - packages: 
-
 Here we have the packages that need to be installed on your machine to run the app
 
 1. mysql 
@@ -45,7 +41,6 @@ Here we have the packages that need to be installed on your machine to run the a
 
 
 Requieremnts - Hardware:
-
 Here we have the hardware requirements that we need to build the full system
 
 1. Raspberry pi 
