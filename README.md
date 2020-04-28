@@ -29,17 +29,6 @@ Instructions to view attendance
 6. DONE! 
 
 
-
-Requirements - packages: 
-Here we have the packages that need to be installed on your machine to run the app
-
-1. mysql 
-2. php 
-3. python3
-4. NGINX 
-5. medoo framework
-
-
 Requieremnts - Hardware:
 Here we have the hardware requirements that we need to build the full system
 
