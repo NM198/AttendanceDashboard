@@ -11,23 +11,17 @@ db = mysql.connector.connect(
   passwd="attendance2020",
   database="attendancesystem"
 )
-
-cursor = db.cursor()
+cursor = db.cursor(buffered=True)
 reader = SimpleMFRC522()
-
 lcd = LCD.Adafruit_CharLCD(4, 24, 23, 17, 18, 22, 16, 2, 4);
-
-try:
+try:     
   while True:
     lcd.clear()
     lcd.message('Place Card to\nrecord attendance')
     id, text = reader.read()
-
     cursor.execute("Select id, name FROM users WHERE rfid_uid="+str(id))
     result = cursor.fetchone()
-
-    lcd.clear()
-
+    lcd.clear() 
     if cursor.rowcount >= 1:
       lcd.message("Welcome " + result[1])
       cursor.execute("INSERT INTO attendance (user_id) VALUES (%s)", (result[0],) )
